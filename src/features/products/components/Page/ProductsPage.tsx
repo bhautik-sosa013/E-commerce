@@ -35,6 +35,7 @@ const ProductsPage: React.FC = () => {
   }, [setProducts]);
 
   const filteredData = getFilteredProducts();
+  console.log(filteredData)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentItems = filteredData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
