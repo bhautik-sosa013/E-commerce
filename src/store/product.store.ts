@@ -6,6 +6,7 @@ export interface Product {
   price: number;
   category: string;
   imageUrl: string;
+  models?: string[];
   status: 'in-stock' | 'out-of-stock' | 'coming-soon';
   type: 'matte' | 'clear' | 'leather';
   isFeatured?: boolean;
@@ -43,11 +44,10 @@ export const useProductStore = create<ProductState>((set, get) => ({
   setCurrentPage: (p) => set({ currentPage: p }),
 
   getFilteredProducts: () => {
-    const { products, searchQuery, selectedCategory, sortBy } = get();
-    
+    const { products, searchQuery, selectedCategory, sortBy } = get();    
     const filtered = products.filter((p) => {
       const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesCategory = selectedCategory === 'All' || p.category === selectedCategory;
+      const matchesCategory = selectedCategory === 'All' || p.models?.includes(selectedCategory);
       return matchesSearch && matchesCategory;
     });
 
