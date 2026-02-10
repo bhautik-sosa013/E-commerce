@@ -35,7 +35,6 @@ const ProductsPage: React.FC = () => {
   }, [setProducts]);
 
   const filteredData = getFilteredProducts();
-  console.log(filteredData)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentItems = filteredData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
@@ -61,7 +60,7 @@ const ProductsPage: React.FC = () => {
 
           <div className="flex-1">
             {isLoading ? (
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                 {Array.from({ length: ITEMS_PER_PAGE }).map((_, i) => (
                   <ProductSkeleton key={i} />
