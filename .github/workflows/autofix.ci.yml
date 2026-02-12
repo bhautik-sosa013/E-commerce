@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
   push:
-    branches: ["main"] # Recommended to catch fixes on merge
+    branches: ["main"]
 
 jobs:
   autofix:
@@ -16,16 +16,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm' # Speeds up subsequent runs
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci # 'npm ci' is faster and more reliable for CI environments
+        run: npm ci
 
+      # Added --ignore-path to skip the .github folder
       - name: Run Prettier
-        run: npx prettier --write .
+        run: npx prettier --write . --ignore-path .github
 
+      # Added --ignore-pattern to skip the .github folder
       - name: Run ESLint auto-fix
-        run: npx eslint . --fix
+        run: npx eslint . --fix --ignore-pattern ".github/**"
 
       - name: Autofix CI
         uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
