@@ -14,7 +14,7 @@ const BrandPromise = () => (
               "Military-grade drop protection tested",
               "Premium materials that won't yellow or fade",
               "Lifetime warranty against defects",
-              "Free returns within 30 days"
+              "Free returns within 30 days",
             ].map((promise, index) => (
               <div key={index} className="flex items-start gap-4">
                 <Check className="text-[#D4AF37] shrink-0 mt-1" size={24} />

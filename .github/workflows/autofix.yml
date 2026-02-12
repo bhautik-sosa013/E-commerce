@@ -1,34 +1,33 @@
-name: Autofix Pull Requests
+name: autofix.ci
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
 
 jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout the code
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      # 2. Install Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 'lts/*'
+          cache: 'npm'
 
-      # 3. Install dependencies
-      - name: Install dependencies
-        run: npm install
+      - run: npm ci
 
-      # 4. Run Prettier to auto-format code
-      - name: Run Prettier
-        run: npx prettier --write .
+      - name: Run fixes
+        run: |
+          # --ignore-unknown stops it from crashing on things like favicon.svg
+          npx prettier --write "src/**/*.{ts,tsx,js,jsx,json,css,md}" "public/**/*" "*.{js,ts,json,md}" --ignore-unknown
+          
+          # ESLint targets your source code logic
+          npx eslint src --ext .ts,.tsx --fix
 
-      # 5. Run ESLint to fix minor lint issues
-      - name: Run ESLint auto-fix
-        run: npx eslint . --fix
-
-      # 6. Call autofix.ci to push fixes to PR
-      - name: Autofix CI
-        uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@v1
+        if: always()

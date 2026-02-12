@@ -14,29 +14,35 @@ const ProductsPage: React.FC = () => {
   const { setProducts, getFilteredProducts, currentPage } = useProductStore();
   const [isLoading, setIsLoading] = useState(true);
 
-
   useEffect(() => {
     const q = query(collection(db, "products"));
-    
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const liveData = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      })) as Product[];
-      
-      setProducts(liveData);
-      setIsLoading(false); 
-    }, (error) => {
-      console.error("Firebase fetch error:", error);
-      setIsLoading(false);
-    });
+
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const liveData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as Product[];
+
+        setProducts(liveData);
+        setIsLoading(false);
+      },
+      (error) => {
+        console.error("Firebase fetch error:", error);
+        setIsLoading(false);
+      },
+    );
 
     return () => unsubscribe();
   }, [setProducts]);
 
   const filteredData = getFilteredProducts();
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const currentItems = filteredData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const currentItems = filteredData.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
 
   return (
     <div className="min-h-screen bg-[#F6F4F1] px-6 py-12 md:py-24">
@@ -60,20 +66,21 @@ const ProductsPage: React.FC = () => {
 
           <div className="flex-1">
             {isLoading ? (
-
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                 {Array.from({ length: ITEMS_PER_PAGE }).map((_, i) => (
                   <ProductSkeleton key={i} />
                 ))}
               </div>
             ) : filteredData.length === 0 ? (
-             
               <div className="flex flex-col items-center justify-center py-20 text-center">
-                <p className="text-xl font-bold text-[#3D1A12]">No cases found</p>
-                <p className="text-[#3D1A12]/40">Try adjusting your filters or search.</p>
+                <p className="text-xl font-bold text-[#3D1A12]">
+                  No cases found
+                </p>
+                <p className="text-[#3D1A12]/40">
+                  Try adjusting your filters or search.
+                </p>
               </div>
             ) : (
-              
               <>
                 <ProductGrid products={currentItems} />
                 <Pagination />
