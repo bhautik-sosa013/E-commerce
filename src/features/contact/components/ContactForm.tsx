@@ -3,18 +3,18 @@ import { ArrowRight } from "lucide-react";
 const ContactForm: React.FC = () => (
   <div className="space-y-6 p-8 bg-white rounded-xl">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <input 
-        type="text" 
+      <input
+        type="text"
         placeholder="Name"
         className="w-full bg-white border border-[#E6E3DF] rounded-xl py-4 px-6 text-sm outline-none focus:border-[#3D1E16] transition-colors text-[#3D1E16]"
       />
-      <input 
-        type="email" 
+      <input
+        type="email"
         placeholder="Email"
         className="w-full bg-white border border-[#E6E3DF] rounded-xl py-4 px-6 text-sm outline-none focus:border-[#3D1E16] transition-colors text-[#3D1E16]"
       />
     </div>
-    <textarea 
+    <textarea
       placeholder="Your message"
       rows={4}
       className="w-full bg-white border border-[#E6E3DF] rounded-xl py-4 px-6 text-sm outline-none focus:border-[#3D1E16] transition-colors resize-none text-[#3D1E16]"

@@ -12,21 +12,31 @@ const ContactPage: React.FC = () => {
             <ContactInfo />
             {/* Minimal Map Placeholder */}
             <div className="w-full h-32 bg-[#E6E3DF] rounded-2xl flex items-center justify-center border border-[#DEDAD5]">
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#8C7A76]">Our Location</span>
+              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#8C7A76]">
+                Our Location
+              </span>
             </div>
           </div>
 
           <div className="bg-[#EFECE8] p-8 md:p-10 rounded-[2.5rem] border border-[#E6E3DF]">
-            <h3 className="text-xl font-bold text-[#3D1E16] tracking-tight mb-8">Direct Message</h3>
+            <h3 className="text-xl font-bold text-[#3D1E16] tracking-tight mb-8">
+              Direct Message
+            </h3>
             <ContactForm />
           </div>
         </div>
 
         <footer className="mt-24 pt-8 border-t border-[#E6E3DF] flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[9px] font-black uppercase tracking-widest text-[#8C7A76]">© 2024 ZayqCase Studio</p>
+          <p className="text-[9px] font-black uppercase tracking-widest text-[#8C7A76]">
+            © 2024 ZayqCase Studio
+          </p>
           <div className="flex gap-6">
-            <span className="text-[9px] font-black uppercase tracking-widest text-[#8C7A76] cursor-pointer">Privacy</span>
-            <span className="text-[9px] font-black uppercase tracking-widest text-[#8C7A76] cursor-pointer">Terms</span>
+            <span className="text-[9px] font-black uppercase tracking-widest text-[#8C7A76] cursor-pointer">
+              Privacy
+            </span>
+            <span className="text-[9px] font-black uppercase tracking-widest text-[#8C7A76] cursor-pointer">
+              Terms
+            </span>
           </div>
         </footer>
       </div>

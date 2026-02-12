@@ -1,4 +1,3 @@
-
 const ProductSkeleton = () => (
   <div className="flex flex-col gap-4 animate-pulse">
     {/* Image Placeholder */}
