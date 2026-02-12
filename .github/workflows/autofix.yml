@@ -23,11 +23,10 @@ jobs:
 
       - name: Run fixes
         run: |
-          # Only run prettier on specific directories and root files. 
-          # This EXPLICITLY avoids the .github folder.
-          npx prettier --write "src/**/*.{ts,tsx,js,jsx,json,css,md}" "public/**/*" "*.{js,ts,json,md}"
+          # --ignore-unknown stops it from crashing on things like favicon.svg
+          npx prettier --write "src/**/*.{ts,tsx,js,jsx,json,css,md}" "public/**/*" "*.{js,ts,json,md}" --ignore-unknown
           
-          # Run eslint only on the source code
+          # ESLint targets your source code logic
           npx eslint src --ext .ts,.tsx --fix
 
       - uses: autofix-ci/action@v1
