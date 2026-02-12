@@ -5,16 +5,16 @@ const Footer: React.FC = () => {
   const { pathname } = useLocation();
 
   const linkClass = (path: string) =>
-    `transition-colors ${pathname === path
-      ? "text-[#3D1A12] font-semibold"
-      : "text-[#3D1A12]/60 hover:text-[#3D1A12]"
+    `transition-colors ${
+      pathname === path
+        ? "text-[#3D1A12] font-semibold"
+        : "text-[#3D1A12]/60 hover:text-[#3D1A12]"
     }`;
 
   return (
     <footer className="w-full bg-[#f4f4f4] pt-16 pb-8 px-6 md:px-12 border-t border-[#3D1A12]/10">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 md:gap-8 mb-16">
-
           {/* Shop Column */}
           <div>
             <h3 className="font-bold text-[#3D1A12] mb-6">Shop</h3>
@@ -59,7 +59,15 @@ const Footer: React.FC = () => {
                 className="text-[#3D1A12]/70 hover:text-[#3D1A12] transition-colors"
                 aria-label="Instagram"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  viewBox="0 0 24 24"
+                >
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -72,7 +80,11 @@ const Footer: React.FC = () => {
                 className="text-[#3D1A12]/70 hover:text-[#3D1A12] transition-colors"
                 aria-label="Twitter"
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
@@ -86,13 +98,22 @@ const Footer: React.FC = () => {
             © 2024 ZAYQ. All rights reserved.
           </div>
           <div className="flex space-x-8 order-1 md:order-2">
-            <Link to="/privacy-policy" className="hover:text-[#3D1A12] transition-colors">
+            <Link
+              to="/privacy-policy"
+              className="hover:text-[#3D1A12] transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link to="/terms-of-service" className="hover:text-[#3D1A12] transition-colors">
+            <Link
+              to="/terms-of-service"
+              className="hover:text-[#3D1A12] transition-colors"
+            >
               Terms & Conditions
             </Link>
-            <Link to="/refund-policy" className="hover:text-[#3D1A12] transition-colors">
+            <Link
+              to="/refund-policy"
+              className="hover:text-[#3D1A12] transition-colors"
+            >
               Refund Policy
             </Link>
           </div>

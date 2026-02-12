@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -27,7 +27,10 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="shrink-0">
-          <Link to={"/"} className="text-2xl md:text-3xl font-bold tracking-tight text-[#3D1A12]">
+          <Link
+            to={"/"}
+            className="text-2xl md:text-3xl font-bold tracking-tight text-[#3D1A12]"
+          >
             ZAYQ
           </Link>
         </div>
@@ -39,14 +42,18 @@ const Navbar: React.FC = () => {
               key={item.path}
               to={item.path}
               className={`relative group py-1 font-medium transition-colors ${
-                location.pathname === item.path ? "text-[#3D1A12]" : "text-[#3D1A12]/60"
+                location.pathname === item.path
+                  ? "text-[#3D1A12]"
+                  : "text-[#3D1A12]/60"
               }`}
             >
               {item.label}
               <motion.span
                 layoutId="navUnderline"
                 className={`absolute bottom-0 left-0 h-0.5 bg-[#3D1A12] ${
-                  location.pathname === item.path ? "w-full" : "w-0 group-hover:w-full"
+                  location.pathname === item.path
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
                 } transition-all duration-300`}
               />
             </Link>
@@ -67,11 +74,35 @@ const Navbar: React.FC = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <motion.div animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}>
-                {isMobileMenuOpen ? (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                ) : (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" /></svg>
-                )}
+              {isMobileMenuOpen ? (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                </svg>
+              )}
             </motion.div>
           </button>
         </div>
@@ -80,7 +111,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -92,7 +123,9 @@ const Navbar: React.FC = () => {
                 to={item.path}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`text-lg font-medium ${
-                  location.pathname === item.path ? "text-[#3D1A12]" : "text-[#3D1A12]/60"
+                  location.pathname === item.path
+                    ? "text-[#3D1A12]"
+                    : "text-[#3D1A12]/60"
                 }`}
               >
                 {item.label}
