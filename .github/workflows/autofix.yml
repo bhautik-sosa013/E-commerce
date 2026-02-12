@@ -1,0 +1,33 @@
+name: autofix.ci
+
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: write # Changed from 'read' to 'write' to allow the fix to be pushed
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # This runs both Prettier (formatting) and ESLint (logic/style)
+      - name: Run fixes
+        run: |
+          npx prettier --write .
+          npx eslint src --ext .ts,.tsx --fix
+
+      - uses: autofix-ci/action@v1
+        if: always()
