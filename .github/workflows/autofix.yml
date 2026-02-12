@@ -6,15 +6,15 @@ on:
     branches: [ "main" ]
 
 permissions:
-  contents: write # Crucial: Allows the bot to commit the fixes
+  contents: write # Needed to push the fixes
 
 jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 # Use stable v4
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4 # Use stable v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'npm'
@@ -23,11 +23,12 @@ jobs:
 
       - name: Run fixes
         run: |
-          # Format code (ensure .prettierignore handles .github)
-          npx prettier --write . --ignore-path .prettierignore
-          
-          # Fix React/TS logic errors
-          npx eslint src --ext .ts,.tsx --fix
+          # Format EVERYTHING except the .github directory
+          npx prettier --write . --ignore-path .gitignore
+
+          # Fix ESLint issues in the root and src
+          # We include the root config files because your log shows autofix wants to fix vite.config.ts
+          npx eslint . --fix
 
       - uses: autofix-ci/action@v1
         if: always()
