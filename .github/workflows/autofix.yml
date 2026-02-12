@@ -1,20 +1,33 @@
 name: autofix.ci
+
 on:
   pull_request:
   push:
     branches: [ "main" ]
+
 permissions:
-  contents: read
+  contents: write # Crucial: Allows the bot to commit the fixes
 
 jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v4 # Use stable v4
+
+      - uses: actions/setup-node@v4 # Use stable v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
 
       - run: npm ci
-      - run: npx prettier --write . --ignore-path .prettierignore
-    
 
-      - uses: autofix-ci/action@7a166d7532b277f34e16238930461bf77f9d7ed8
+      - name: Run fixes
+        run: |
+          # Format code (ensure .prettierignore handles .github)
+          npx prettier --write . --ignore-path .prettierignore
+          
+          # Fix React/TS logic errors
+          npx eslint src --ext .ts,.tsx --fix
+
+      - uses: autofix-ci/action@v1
+        if: always()
