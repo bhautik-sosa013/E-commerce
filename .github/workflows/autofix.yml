@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 
 permissions:
-  contents: write # Needed to push the fixes
+  contents: write
 
 jobs:
   autofix:
@@ -23,12 +23,12 @@ jobs:
 
       - name: Run fixes
         run: |
-          # Format EVERYTHING except the .github directory
-          npx prettier --write . --ignore-path .gitignore
-
-          # Fix ESLint issues in the root and src
-          # We include the root config files because your log shows autofix wants to fix vite.config.ts
-          npx eslint . --fix
+          # Only run prettier on specific directories and root files. 
+          # This EXPLICITLY avoids the .github folder.
+          npx prettier --write "src/**/*.{ts,tsx,js,jsx,json,css,md}" "public/**/*" "*.{js,ts,json,md}"
+          
+          # Run eslint only on the source code
+          npx eslint src --ext .ts,.tsx --fix
 
       - uses: autofix-ci/action@v1
         if: always()
