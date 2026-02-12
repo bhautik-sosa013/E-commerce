@@ -2,15 +2,14 @@
 <p align="center"> The Advanced Component-Based Platform for Product Management and Dynamic Web Applications </p>
 
 <p align="center">
-  <img alt="Build" src="https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge">
-  <img alt="Issues" src="https://img.shields.io/badge/Issues-0%20Open-blue?style=for-the-badge">
-  <img alt="Contributions" src="https://img.shields.io/badge/Contributions-Welcome-orange?style=for-the-badge">
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/BeyteFlow/ZAYQ?style=for-the-badge" alt="GitHub stars">
+  <img src="https://img.shields.io/github/forks/BeyteFlow/ZAYQ?style=for-the-badge" alt="GitHub forks">
+  <img src="https://img.shields.io/github/issues/BeyteFlow/ZAYQ?style=for-the-badge" alt="GitHub issues">
+  <img src="https://img.shields.io/github/license/BeyteFlow/ZAYQ?style=for-the-badge" alt="GitHub license">
 </p>
-<!-- 
-  **Note:** These are static placeholder badges. Replace them with your project's actual, live status badges.
-  You can generate your own at https://shields.io
--->
+
+
+
 
 ---
 
