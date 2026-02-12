@@ -3,35 +3,31 @@ name: autofix.ci
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  push:
+    branches: ["main"] # Recommended to catch fixes on merge
 
 jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout the code
       - uses: actions/checkout@v4
 
-      # 2. Install Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm' # Speeds up subsequent runs
 
-      # 3. Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci # 'npm ci' is faster and more reliable for CI environments
 
-      # 4. Run Prettier to auto-format code
       - name: Run Prettier
         run: npx prettier --write .
 
-      # 5. Run ESLint to fix minor lint issues
       - name: Run ESLint auto-fix
         run: npx eslint . --fix
 
-      # 6. Call autofix.ci to push fixes to PR
       - name: Autofix CI
         uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
         with:
           fail-fast: true
-          
