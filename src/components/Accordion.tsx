@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { FaqItem } from './FaqItem';
-import type { FAQ } from '../data/faqs';
+import React, { useState } from "react";
+import { FaqItem } from "./FaqItem";
+import type { FAQ } from "../data/faqs";
 
 interface AccordionProps {
   items: FAQ[];
@@ -11,7 +11,7 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
   const [openId, setOpenId] = useState<number | null>(null);
 
   const handleToggle = (id: number) => {
-    setOpenId(prevId => (prevId === id ? null : id));
+    setOpenId((prevId) => (prevId === id ? null : id));
   };
 
   return (

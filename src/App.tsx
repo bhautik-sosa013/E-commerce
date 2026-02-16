@@ -1,18 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from "./assets/components/layout/Navbar"
-import Footer from "./assets/components/layout/Footer"
-import About from "./features/about/About"
-import Homepage from "./features/home/Homepage"
-import ProductsPage from "./features/products/components/Page/ProductsPage"
-import Contact from "./features/contact/Contact"
-import AddProductPage from "./admin/page/AddProductPage"
-import NotFound from "./pages/404Page"
-import PrivacyPolicy from "./features/legal/PrivacyPolicy"
-import RefundPolicy from "./features/legal/RefundPolicy"
-import TermsOfService from "./features/legal/TermsOfService"
-import FaqsPage from "./pages/FaqsPage"
+import Navbar from "./assets/components/layout/Navbar";
+import Footer from "./assets/components/layout/Footer";
+import About from "./features/about/About";
+import Homepage from "./features/home/Homepage";
+import ProductsPage from "./features/products/components/Page/ProductsPage";
+import Contact from "./features/contact/Contact";
+import AddProductPage from "./admin/page/AddProductPage";
+import NotFound from "./pages/404Page";
+import PrivacyPolicy from "./features/legal/PrivacyPolicy";
+import RefundPolicy from "./features/legal/RefundPolicy";
+import TermsOfService from "./features/legal/TermsOfService";
+import FaqsPage from "./pages/FaqsPage";
 
 const App: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Plus, Minus } from 'lucide-react';
+import React from "react";
+import { Plus, Minus } from "lucide-react";
 
 interface FaqItemProps {
   question: string;
@@ -8,7 +8,12 @@ interface FaqItemProps {
   onToggle: () => void;
 }
 
-export const FaqItem: React.FC<FaqItemProps> = ({ question, answer, isOpen, onToggle }) => {
+export const FaqItem: React.FC<FaqItemProps> = ({
+  question,
+  answer,
+  isOpen,
+  onToggle,
+}) => {
   return (
     <div className="rounded-[50px] shadow-sm border border-gray-100 py-10 px-12 transition-all hover:shadow-2xl shadow-[#3D1E16] bg-white mb-4">
       <button
@@ -26,7 +31,9 @@ export const FaqItem: React.FC<FaqItemProps> = ({ question, answer, isOpen, onTo
 
       <div
         className={`grid transition-all duration-300 ease-in-out ${
-          isOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"
+          isOpen
+            ? "grid-rows-[1fr] opacity-100 mt-4"
+            : "grid-rows-[0fr] opacity-0"
         }`}
       >
         <div className="text-lg overflow-hidden text-gray-600 leading-relaxed">
