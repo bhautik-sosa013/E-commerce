@@ -4,16 +4,16 @@ import { faqData } from '../data/faqs';
 import type { FAQ } from '../data/faqs';
 
 // Define the literal types to match your faqs.ts exactly
-type Category = 'Payment & billing' | 'Shopping & Orders' | 'Technical Support';
+type Category = FAQ['category'];
 
 const FaqsPage: React.FC = () => {
   // 1. State to track the active category
-  const [activeCategory, setActiveCategory] = useState<Category>('Payment & billing');
+  const [activeCategory, setActiveCategory] = useState<Category>('Technical Support');
 
   const categories: Category[] = [
-    'Payment & billing',
+    'Technical Support',
     'Shopping & Orders',
-    'Technical Support'
+    'Payment & billing'
   ];
 
   // 2. Filter the data based on the state
@@ -49,7 +49,7 @@ const FaqsPage: React.FC = () => {
       {/* 4. Pass the filtered list to the Accordion */}
       <div className="max-w-3xl mx-auto">
         {filteredFaqs.length > 0 ? (
-          <Accordion items={filteredFaqs} />
+          <Accordion key={activeCategory} items={filteredFaqs} />
         ) : (
           <p className="text-center text-gray-500 text-xl">
             No questions found in this category.
