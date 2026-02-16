@@ -1,5 +1,5 @@
-import React from "react"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./assets/components/layout/Navbar"
 import Footer from "./assets/components/layout/Footer"
@@ -25,12 +25,12 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/products" element={<ProductsPage />} />
-            <Route path="/about" element={<About/>}/>
-            <Route path="contact" element={<Contact/>}/>
-            <Route path="/add" element={<AddProductPage/>}/>
+            <Route path="/about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="/add" element={<AddProductPage />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />  
-            <Route path="/refund-policy" element={<RefundPolicy />} />  
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/faqs" element={<FaqsPage />} />
           </Routes>
@@ -39,7 +39,7 @@ const App: React.FC = () => {
         <Footer />
       </div>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;

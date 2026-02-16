@@ -4,8 +4,9 @@ const ContactHero: React.FC = () => (
       GET IN <span className="opacity-50">TOUCH</span>
     </h1>
     <p className="text-lg md:text-xl text-[#8C7A76] font-medium leading-relaxed max-w-xl">
-      Have a question or just want to say hello? Our studio is here to help you find the perfect fit.
+      Have a question or just want to say hello? Our studio is here to help you
+      find the perfect fit.
     </p>
   </div>
 );
-export default ContactHero
+export default ContactHero;

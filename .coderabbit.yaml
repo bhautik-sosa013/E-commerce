@@ -7,7 +7,7 @@ reviews:
   auto_review:
     enabled: true
     drafts: false
-  
+
   # This is the new way to give specific instructions
   path_instructions:
     - path: "**/*.{ts,tsx}"

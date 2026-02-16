@@ -30,9 +30,10 @@ function AboutContent() {
             Ready to Protect Your iPhone?
           </h2>
           <p className="text-xl md:text-2xl mb-12 text-[#F7F7F7]/80 font-light">
-            Shop our collection of premium iPhone cases designed for every model.
+            Shop our collection of premium iPhone cases designed for every
+            model.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             {/* Primary Gold Button */}
             <Link
