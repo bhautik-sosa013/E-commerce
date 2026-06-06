@@ -29,20 +29,3 @@ jobs:
         run: npm run lint || echo "Linting warnings found, moving to deploy..."
 
       
-
-  deploy:
-    name: 🌐 Deploy to Vercel
-    needs: quality-control
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🛰️ Checkout Code
-        uses: actions/checkout@v6
-
-      - name: 🚀 Deploy to Vercel
-        uses: amondnet/vercel-action@v42
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
